@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Ecole } from '../models/ecole.model';
 @Injectable({
@@ -15,8 +15,12 @@ export class EcoleService {
     return this.http.post(this.baseURL, ecole);
   }
 
-  getEcoleList() {
-    return this.http.get(this.baseURL);
+  getEcoleList(keyword) {
+    let params = new HttpParams();
+    if (keyword) {
+      params = params.set('keyword', keyword);
+    }
+    return this.http.get(this.baseURL, { params });
   }
 
   putEcole(ecole: Ecole) {

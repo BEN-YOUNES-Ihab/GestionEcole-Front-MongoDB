@@ -28,14 +28,18 @@ export class HomeComponent implements OnInit {
   };
 
   public ecolesList : Ecole[];
-
-  constructor(private ecoleService : EcoleService,private modalService: NgbModal, private modalsService : ModalsService, private toastr: ToastrService) {}
+  public keyword = "";
+  constructor(
+    private ecoleService : EcoleService,
+    private modalService: NgbModal,
+     private modalsService : ModalsService,
+      private toastr: ToastrService) {}
 
   ngOnInit() {
     this.getEcoles();
   }
   getEcoles(){
-    this.ecoleService.getEcoleList().subscribe(data =>{
+    this.ecoleService.getEcoleList(this.keyword).subscribe(data =>{
       this.ecolesList = data as Ecole[];
     });
   }

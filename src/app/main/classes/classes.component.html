@@ -11,7 +11,7 @@
               class="form-control"
               name="search"
               placeholder="Rechercher"
-              [(ngModel)]="keyword" (ngModelChange)="search()"
+              [(ngModel)]="keyword" (ngModelChange)="update()"
             />
             <div class="input-group-append">
               <span class="input-group-text cursor-pointer">
@@ -67,7 +67,7 @@
                   </tr>
                 </tbody>
               </table>
-              <nav *ngIf="totalPages > 1" class="m-2">
+              <nav class="m-2">
                 <div class="d-flex align-items-center">
                   <ul class="pagination mb-0">
                     <li class="page-item" [class.disabled]="page == 0">
@@ -84,7 +84,7 @@
                   </ul>
                   <label class="d-flex align-items-center mx-2 mb-0">
                     Afficher
-                    <select class="form-control mx-2 selectPageSortWidth" [(ngModel)]="size" (ngModelChange)="changePageSize()">
+                    <select class="form-control mx-2 selectPageSortWidth" [(ngModel)]="size" (ngModelChange)="update()">
                       <option value="5">5</option>
                       <option value="10">10</option>
                       <option value="25">25</option>

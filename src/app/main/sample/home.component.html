@@ -11,6 +11,7 @@
             class="form-control"
             name="search"
             placeholder="Rechercher"
+            [(ngModel)]="keyword" (ngModelChange)="getEcoles()"
           />
           <div class="input-group-append">
             <span class="input-group-text cursor-pointer">

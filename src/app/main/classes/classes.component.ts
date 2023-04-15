@@ -112,9 +112,6 @@ export class ClassesComponent implements OnInit {
       }
     }, () => { })
   }
-  search() {
-    this.getClasses();
-  }
 
   getClasses() {
     this.classeService.getClassesByEcoleId(this.ecoleId, this.keyword, this.page, this.size).subscribe(
@@ -141,7 +138,8 @@ export class ClassesComponent implements OnInit {
       this.getClasses();
     }
   }
-  changePageSize(){
+  update(){
+    this.page = 0;
     this.getClasses();
   }
 }
