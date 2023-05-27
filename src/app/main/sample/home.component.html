@@ -40,7 +40,7 @@
         <div class="card portfolio-card" *ngIf="ecole">
           <div class="action-btns-container">
 
-            <div class="action-btn text-danger" (click)="deleteEcole(ecole.id)" placement="top"
+            <div class="action-btn text-danger" (click)="deleteEcole(ecole._id)" placement="top"
             ngbTooltip="Supprimer">
               <i data-feather="trash"></i>
             </div>
@@ -75,7 +75,7 @@
                 </div>
               </div>
               <div class="card btn-card">
-                <button class="btn btn-gradient-primary btn-sm" [routerLink]="['/classes', ecole.id]">
+                <button class="btn btn-gradient-primary btn-sm" [routerLink]="['/classes', ecole._id]">
                     Accèder
                 </button>
               </div>
@@ -105,7 +105,7 @@
   </div>
   <div class="modal-body" tabindex="0" ngbAutofocus>
     <form #ecoleForm="ngForm" class="event-form needs-validation">
-      <input type="hidden" class="form-control" name="id"  [(ngModel)]="selectedEcole.id">
+      <input type="hidden" class="form-control" name="id"  [(ngModel)]="selectedEcole._id">
       <div class="mb-2">
         <label for="name" class="form-label">Nom de l'école</label>
         <input 

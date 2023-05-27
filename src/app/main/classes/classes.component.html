@@ -47,7 +47,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let classe of classes">
-                    <td>{{classe.id}}</td>
+                    <td>{{classe._id}}</td>
                     <td>{{classe.nom}}</td>
                     <td>{{classe.nbreleve}}</td>
                     <td class="overflow-hidden">
@@ -113,7 +113,7 @@
   </div>
   <div class="modal-body" tabindex="0" ngbAutofocus>
     <form #classeForm="ngForm" class="event-form needs-validation" *ngIf="selectedClasse">
-      <input type="hidden" class="form-control" name="id"  [(ngModel)]="selectedClasse.id">
+      <input type="hidden" class="form-control" name="id"  [(ngModel)]="selectedClasse._id">
       <div class="mb-2">
         <label for="nom" class="form-label">Nom de la classe</label>
         <input 

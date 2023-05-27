@@ -7,12 +7,12 @@ import { Ecole } from '../models/ecole.model';
 })
 export class EcoleService {
 
-  readonly baseURL = 'http://localhost:8081/ecoles';
+  readonly baseURL = 'http://localhost:3000/ecole';
 
   constructor(private http: HttpClient) { }
 
   postEcole(ecole: Ecole) {
-    return this.http.post(this.baseURL, ecole);
+    return this.http.post(this.baseURL+"/addEcole", ecole);
   }
 
   getEcoleList(keyword) {
@@ -20,18 +20,18 @@ export class EcoleService {
     if (keyword) {
       params = params.set('keyword', keyword);
     }
-    return this.http.get(this.baseURL, { params });
+    return this.http.get(this.baseURL+"/getEcoles", { params });
   }
 
   putEcole(ecole: Ecole) {
-    return this.http.put(this.baseURL + `/${ecole.id}`, ecole);
+    return this.http.put(this.baseURL+"/updateEcole" + `/${ecole._id}`, ecole);
   }
-
+  
   deleteEcole(id: string) {
-    return this.http.delete(this.baseURL + `/${id}`);
+    return this.http.delete(this.baseURL+"/deleteEcole" + `/${id}`);
   }
 
   getEcoleById(id: string) {
-    return this.http.get(this.baseURL + `/${id}`);
+    return this.http.get(this.baseURL+"/getEcole" + `/${id}`);
   }
 }

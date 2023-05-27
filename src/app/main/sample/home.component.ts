@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
         console.log(this.ecolesList);
         this.ecoleService.deleteEcole(id).subscribe(data => {
           if (data) {
-            const index = this.ecolesList.findIndex(x => x.id == id);
+            const index = this.ecolesList.findIndex(x => x._id == id);
             this.ecolesList.splice(index, 1);
             this.toastr.success('Opération éffectuée', 'Succès');
           }

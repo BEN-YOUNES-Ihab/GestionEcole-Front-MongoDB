@@ -30,7 +30,7 @@ export class ClassesComponent implements OnInit {
   public classeSubmitted = false;
   public classes: Classe[] = [];
   public selectedClasse: Classe = new Classe();
-  public ecoleId: number ;
+  public ecoleId: any ;
   public keyword: string = '';
   public page: number = 0;
   public size: number = 5;
@@ -45,7 +45,7 @@ export class ClassesComponent implements OnInit {
       private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.ecoleId = Number(this.route.snapshot.paramMap.get('id'));
+    this.ecoleId = this.route.snapshot.paramMap.get('id');
     this.getClasses();
   }
 
@@ -54,7 +54,6 @@ export class ClassesComponent implements OnInit {
     this.showAdd = true;
     this.showUpdate = false
     this.selectedClasse = new Classe;
-    console.log(this.showAdd)
     this.modalService.open(modalBasic, {
       windowClass: 'modal'
     });
@@ -101,7 +100,7 @@ export class ClassesComponent implements OnInit {
   deleteClasse(classe :Classe){
     this.modalsService.openConfirmationModal('Voulez-vous vraiment supprimer cette classe ?', 'danger', 'Supprimer').then(result => {
       if (result) {
-        this.classeService.deleteClasse(classe.id).subscribe(data => {
+        this.classeService.deleteClasse(classe._id).subscribe(data => {
           this.classeSubmitted = false;
           this.toastr.success('Opération éffectuée', 'Succès');
           this.modalService.dismissAll();
@@ -116,10 +115,12 @@ export class ClassesComponent implements OnInit {
   getClasses() {
     this.classeService.getClassesByEcoleId(this.ecoleId, this.keyword, this.page, this.size).subscribe(
       (data) => {
-        console.log('Classes fetched successfully', data);
-        this.classes = data.content;
-        this.totalElements = data.totalElements;
-        this.totalPages = data.totalPages;
+        console.log(data);
+        if(data){
+          this.classes = data.content;
+          this.totalElements = data.totalElements;
+          this.totalPages = data.totalPages;
+        }
       },
       (error) => console.log(error)
     );

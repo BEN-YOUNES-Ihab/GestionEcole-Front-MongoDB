@@ -1,5 +1,5 @@
 export class Classe {
-    id = null
+    _id = null
     nom = null;
     nbreleve = 0;
 }

@@ -8,7 +8,7 @@ import { Classe } from '../models/classe.model';
 })
 export class ClasseService {
 
-  private baseUrl = 'http://localhost:8081/classes';
+  private baseUrl = 'http://localhost:3000/classes';
 
   constructor(private http: HttpClient) { }
 
@@ -28,11 +28,11 @@ export class ClasseService {
     if (size) {
       params = params.set('size', size.toString());
     }
-    return this.http.get<any>(`${this.baseUrl}/classes`, { params });
+    return this.http.get<any>(`${this.baseUrl}/getClasses`, { params });
   }
 
   updateClasse(classe: Classe): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/editClasse/${classe.id}`, classe);
+    return this.http.put(`${this.baseUrl}/updateClasse/${classe._id}`, classe);
   }
 
   deleteClasse(id: number): Observable<any> {

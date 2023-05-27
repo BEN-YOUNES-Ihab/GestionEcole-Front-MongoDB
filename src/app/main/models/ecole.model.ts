@@ -1,5 +1,5 @@
 export class Ecole {
-    id = null
+    _id = null
     nom = null;
     adresse = null;
 }
